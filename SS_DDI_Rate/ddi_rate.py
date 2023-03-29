@@ -1,6 +1,6 @@
 import json
 import pandas as pd
-# import treatment_generation
+import treatment_generation
 pd.options.mode.chained_assignment = None  # default='warn'
 from pyDatalog import pyDatalog
 from pyDatalog.pyDatalog import assert_fact, load, ask
@@ -47,12 +47,13 @@ def build_query_p4lucat(input_cui_uri):
 
 
 def store_pharmacokinetic_ddi(effect):
-    if effect in ['Excretion_rate', 'Excretory_function', 'Excretion']:
+    if effect in ['Excretion_rate', 'Excretory_function', 'Excretion', 'excretion rate', 'excretion_rate',
+                  'Excretion rate', 'Excretion Rate']:
         effect = 'excretion'
     elif effect in ['Process_of_absorption', 'Absorption']:
         effect = 'absorption'
     elif effect in ['Serum_concentration', 'Serum_concentration_of', 'Serum_level', 'Serum_globulin_level',
-                    'Metabolite', 'Active_metabolites']:
+                    'Metabolite', 'Active_metabolites', 'serum concentration']:
         effect = 'serum_concentration'
     elif effect in ['Metabolism']:
         effect = 'metabolism'
@@ -132,6 +133,8 @@ def extract_ddi(input_cui, input_cui_uri, labels):
     # print(query)
     union = query_result_p4lucat(query, labels)
     union = combine_col(union, ['Effect', 'Impact'])
+    union = union.reset_index()
+    union = union.drop(columns=['index'])
     set_dsd_label = get_drug_label_by_category(input_cui, union)
     return union, set_dsd_label
 
@@ -211,7 +214,8 @@ def compute_ddi_rate(treatment):
         input_cui_uri = create_filter_cui(input_cui)
         labels = get_Labels(input_cui_uri)
         union, set_dsd_label = extract_ddi(input_cui, input_cui_uri, labels)
-        # print(union)
+        # for k in range(union.shape[0]):
+        #     print(union.EffectorDrugLabel[k], union.AffectedDrugLabel[k], union.Effect[k], union.Impact[k], union.precipitantDrug[k], union.objectDrug[k], union.Effect_Impact[k])
         if union.shape[0] > 0:
             response = discovering_knowledge(union, set_dsd_label)
             # list_treatment_evaluation['Treatment_'+str(i)] = response
@@ -228,7 +232,7 @@ def compute_ddi_rate(treatment):
 #         "Gender": "Male",
 #         "Smoking Habit": "CurrentSmoker",
 #         "Organ affected by the familiar cancer": "",
-#         "Cancer Stage": "IIA",
+#         "Cancer Stage": "IIB",
 #         "Histology": "",
 #         "Molecular Markers": "ALK gene/Immunohistochemistry/Positive",
 #         "PDL1 result": "PDL1 Positive"
