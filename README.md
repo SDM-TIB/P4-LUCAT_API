@@ -72,17 +72,6 @@ PDL1 result: <input> <br />
 Oncological Treatment Type: <input> <br />
 
 # Output
-<<<<<<< HEAD
-|  |               Variables               | Values  |            Metrics             |
-|:-------:|:----------------------------------------:|:------:|:------------------------------:|
-|  |                Gender                 |   Male  | (Head Coverage, [0.026717557]) |
-|  |             Smoking habit             |         |    (PCA Confidence, [1.0])     |
-|  | Organ affected by the familiar cancer |         |                                |
-|  |             Cancer stage              |  IIIA   |                                |
-|  |               Histology               |         |                                |
-|  |           Molecular markers           |         |                                |
-  
-=======
 |  |               Variables               |    Values    |                Metrics                |
 |:-------:|:-------------------------------------:|:------------:|:-------------------------------------:|
 |  |                Gender                 |     Male     |    (Head Coverage, [0.118357488])     |
@@ -93,4 +82,4 @@ Oncological Treatment Type: <input> <br />
 |  |           Molecular markers           |              |                                       |
 |  |              PDL1 result              |              |                                       |
 |  |      Oncological Treatment Type       | Chemotherapy |                                       |
->>>>>>> updated README.md
+
