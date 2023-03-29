@@ -1,2 +1,2 @@
-{"Variables":["Gender","Smoking Habit","Organ affected by the familiar cancer","Cancer Stage","Histology","Molecular Markers"],
-  "Values": ["","","","IIIC","","PDL1"]}
+{"Variables":["Gender","Smoking Habit","Organ affected by the familiar cancer","Cancer Stage","Histology","Molecular Markers","Oncological Treatment Type"],
+  "Values": ["Male","","","IIIA","","","Chemotherapy"]}
