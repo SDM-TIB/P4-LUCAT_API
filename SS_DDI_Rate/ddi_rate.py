@@ -1,6 +1,6 @@
 import json
 import pandas as pd
-import treatment_generation
+# import treatment_generation
 pd.options.mode.chained_assignment = None  # default='warn'
 from pyDatalog import pyDatalog
 from pyDatalog.pyDatalog import assert_fact, load, ask
