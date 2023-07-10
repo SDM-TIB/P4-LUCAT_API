@@ -28,7 +28,7 @@ def violin_plot(violin_Data):
     sns.violinplot(x='Head', y='PCA_Confidence', data=violin_Data, color="0.6")
     sns.stripplot(x='Head', y='PCA_Confidence', data=violin_Data, jitter=True)
     plt.title('Distribution of PCA Confidence')
-    plt.savefig('output/ViolinPlot.png')
+    # plt.savefig('output/ViolinPlot.png')
     plt.show()
 
 
@@ -139,16 +139,19 @@ def run_api(input_json):
     NegRule = ruleTranslation(neg_df)
     result_main = create_NL_template(Rule_main, data2)
     result1 = result_main.rename(columns={"Rule": "All Rules"})
+    result1 = result1.to_json(orient='records')
 
     result_pos = create_NL_template(PosRule, data2)
     result2= result_pos.rename(columns={"Rule": "Positive Outcome Rules"})
+    result2 = result2.to_json(orient='records')
 
     result_neg = create_NL_template(NegRule, data2)
     result3 = result_neg.rename(columns={"Rule": "Negative Outcome Rules"})
+    result3 = result3.to_json(orient='records')
 
     violin_plot(violin_Data)
 
-    return result1.to_json, result2.to_json, result3.to_json
+    return result1, result2, result3
 
 
 
