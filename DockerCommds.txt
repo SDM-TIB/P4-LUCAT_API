@@ -1,15 +1,15 @@
 Build the image:
-docker build -t sdmtib/p4lucat_ddi_rules_api:latest .
+docker build -t sdmtib/p4lucat_ddi_rules_api:4.1 .
 
 
-docker logs -f sdmtib/p4lucat_ddi_rules_api:latest
+docker logs -f sdmtib/p4lucat_ddi_rules_api:4.1
 
 
 Push the image:
-docker push sdmtib/p4lucat_ddi_rules_api:latest
+docker push sdmtib/p4lucat_ddi_rules_api:4.1
 
 
 
 Pull and run the image:
-docker run -d --name p4lucat_ddi_rules_api -p 5105:5000 -e ENDPOINT='https://labs.tib.eu/sdm/p4lucat_kg/sparql' sdmtib/p4lucat_ddi_rules_api:latest
+docker run -d --name p4lucat_ddi_rules_api -p 5105:5000 -e ENDPOINT='https://labs.tib.eu/sdm/p4lucat_kg/sparql' sdmtib/p4lucat_ddi_rules_api:4.1
 
