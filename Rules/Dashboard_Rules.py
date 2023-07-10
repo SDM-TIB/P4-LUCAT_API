@@ -149,7 +149,7 @@ def run_api(input_json):
     result3 = result_neg.rename(columns={"Rule": "Negative Outcome Rules"})
     result3 = result3.to_json(orient='records')
 
-    violin_plot(violin_Data)
+    # violin_plot(violin_Data)
 
     return result1, result2, result3
 
