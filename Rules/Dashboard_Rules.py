@@ -6,8 +6,8 @@ import re
 from fuzzywuzzy import fuzz
 import seaborn as sns
 import matplotlib.pyplot as plt
-from Explaining_rulesHead_API import main_rulesHead
-from PosNeg_Rules import mainPosNeg
+from Rules.Explaining_rulesHead_API import main_rulesHead
+from Rules.PosNeg_Rules import mainPosNeg
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -72,12 +72,6 @@ def create_NL_template(data1, data2):
         new_head = h.replace("THEN the patient ", "")
 
         text1.append(str(row['Body'].strip()) +" "+ str(row['Head']).strip())
-        # text2.append("The PCA Confidence score is " + str(row['PCA_Confidence']) + ". \n"
-        #              + "There are " + str(row['Body_size']) + " patients " + new_body + ". \n"
-        #              + "There are " + str(row['NumP']) + " patients " + new_head + ". \n" + "There are "
-        #              + str(row['Positive_Examples']) + " out of " + str(
-        #     row['Body_size']) + " patients " + new_body + "and also "
-        #              + str(row['Positive_Examples']) + " out of " + str(row['NumP']) + " patients " + new_head + ".")
         text2.append("The PCA Confidence score is " + str( row['PCA_Confidence']) + ". \n"
                      + str(row['Body_size']) + " patients " + new_body + ". \n"
                      + str(row['NumP']) + " patients " + new_head + ". \n"
