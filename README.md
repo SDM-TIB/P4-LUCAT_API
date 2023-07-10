@@ -15,17 +15,20 @@ Oncological Drugs
 Non-Oncological Drugs
 Drug-Drug Interactions
 
-# Input
-<html>
-Gender: <input> <br />
-Smoking habit: <input> <br />
-Organ affected by the cancer of a familiar: <input> <br />
-Cancer stage: <input> <br />
-Histology: <input> <br />
-Molecular markers and associated results: <input> <br />
-PDL1 result: <input> <br />
-Oncological Treatment Type: <input> <br />
+## Input
+List of parameters for selecting a population.
 
+```
+	{"Input": {"Variables": {
+        "Gender": "Male",
+        "Smoking Habit": "CurrentSmoker",
+        "Organ affected by the familiar cancer": "",
+        "Cancer Stage": "IIB",
+        "Histology": "",
+        "Molecular Markers": "ALK gene/Immunohistochemistry/Positive",
+        "PDL1 result": "PDL1 Positive"
+    }}}
+```
 # Output
 
 JSON format:
@@ -60,29 +63,52 @@ based on the selected population from the Input form. For this particular popula
 and all the computed Metrics associated with this rules.
 
 
-# Input
-<html>
-Gender: <input> <br />
-Smoking habit: <input> <br />
-Organ affected by the cancer of a familiar: <input> <br />
-Cancer stage: <input> <br />
-Histology: <input> <br />
-Molecular markers and associated results: <input> <br />
-PDL1 result: <input> <br />
-Oncological Treatment Type: <input> <br />
+## Input
+List of parameters for selecting a population.
+
+```
+	{"Input": {"Variables": {
+        "Gender": "Male",
+        "Smoking Habit": "CurrentSmoker",
+        "Organ affected by the familiar cancer": "",
+        "Cancer Stage": "IIB",
+        "Histology": "",
+        "Molecular Markers": "ALK gene/Immunohistochemistry/Positive",
+        "PDL1 result": "PDL1 Positive"
+    }}}
+```
 
 # Output
-|  |               Variables               |    Values    |                Metrics                |
-|:-------:|:-------------------------------------:|:------------:|:-------------------------------------:|
-|  |                Gender                 |     Male     |    (Head Coverage, [0.118357488])     |
-|  |             Smoking habit             |              |    (PCA Confidence, [0.220720721])    |
-|  | Organ affected by the familiar cancer |              |                                       |
-|  |             Cancer stage              |     IIIA     |                                       |
-|  |               Histology               |              |                                       |
-|  |           Molecular markers           |              |                                       |
-|  |              PDL1 result              |              |                                       |
-|  |      Oncological Treatment Type       | Chemotherapy |                                       |
+|                All Rules                | PCA Confidence Score |            F1 Score             | Explanations    | 
+|:---------------------------------------:|:--------------------:|:-------------------------------:|:----------------|
+|IF a patient is in stage IIIB THEN the patient could have received oncological treatment  Chemotherapy-Radiotherapy |0.485507246|0.0432676788998173|
+The PCA Confidence score is 0.485507246. <br /> 
+There are 141 patients  in stage IIIB.<br /> There are 203 patients could have received oncological treatment  Chemotherapy-Radiotherapy . <br />
+There are 67 out of 141 patients  in stage IIIB and also 67 out of 203 patients could have received oncological treatment  Chemotherapy-Radiotherapy .<br/>|
+|IF a patient has oncological treatment Adjuvant  THEN the patient could have received oncological treatment  Radiotherapy | 1 | 0.0397482616882085 | The PCA Confidence score is 1.0. <br />
+There are 60 patients has oncological treatment Adjuvant  . <br />
+There are 636 patients could have received oncological treatment  Radiotherapy . <br />
+There are 60 out of 60 patients has oncological treatment Adjuvant  and also 60 out of 636 patients could have received oncological treatment  Radiotherapy . <br />|
 
+
+|                                               Positive Outcome Rules                                                | PCA Confidence Score |            F1 Score             | Explanations    | 
+|:-------------------------------------------------------------------------------------------------------------------:|:--------------------:|:-------------------------------:|:----------------|
+| IF a patient is in stage IIIB THEN the patient could have received oncological treatment  Chemotherapy-Radiotherapy |0.485507246|0.0432676788998173|
+The PCA Confidence score is 0.485507246. <br /> 
+There are 141 patients  in stage IIIB.<br /> There are 203 patients could have received oncological treatment  Chemotherapy-Radiotherapy . <br />
+There are 67 out of 141 patients  in stage IIIB and also 67 out of 203 patients could have received oncological treatment  Chemotherapy-Radiotherapy .<br/>|
+|IF a patient has oncological treatment Adjuvant  THEN the patient could have received oncological treatment  Radiotherapy | 1 | 0.0397482616882085 | The PCA Confidence score is 1.0. <br />
+There are 60 patients has oncological treatment Adjuvant  . <br />
+There are 636 patients could have received oncological treatment  Radiotherapy . <br />
+There are 60 out of 60 patients has oncological treatment Adjuvant  and also 60 out of 636 patients could have received oncological treatment  Radiotherapy . <br />|
+
+
+|                                               Negative Outcome Rules                                                | PCA Confidence Score |            F1 Score             | Explanations    | 
+|:-------------------------------------------------------------------------------------------------------------------:|:--------------------:|:-------------------------------:|:----------------|
+| IF a patient is in stage IIIB THEN the patient could have received oncological treatment  Chemotherapy-Radiotherapy |0.485507246|0.0432676788998173|
+The PCA Confidence score is 0.485507246. <br /> 
+There are 141 patients  in stage IIIB.<br /> There are 203 patients could have received oncological treatment  Chemotherapy-Radiotherapy . <br />
+There are 67 out of 141 patients  in stage IIIB and also 67 out of 203 patients could have received oncological treatment  Chemotherapy-Radiotherapy .<br/>|
 
 
 # 3) Compute the DDI rate of drugs for each treatment taken in a population.
