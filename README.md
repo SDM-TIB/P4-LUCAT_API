@@ -68,13 +68,15 @@ List of parameters for selecting a population.
 
 ```
 	{"Input": {"Variables": {
-        "Gender": "Male",
-        "Smoking Habit": "CurrentSmoker",
+        "Gender": "",
+        "Smoking Habit": "",
         "Organ affected by the familiar cancer": "",
-        "Cancer Stage": "IIB",
+        "Cancer Stage": "IIIB",
         "Histology": "",
-        "Molecular Markers": "ALK gene/Immunohistochemistry/Positive",
-        "PDL1 result": "PDL1 Positive"
+        "Molecular Markers": "",
+        "PDL1 result": "",
+        "Oncological Treatment Type": "Chemotherapy",
+        "RulesHead": "OncologicalTreatment"
     }}}
 ```
 
