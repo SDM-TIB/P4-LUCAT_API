@@ -1,6 +1,6 @@
 pyDatalog==0.17.1
 flask-cors
-flask
+flask==2.3.2
 sparqlwrapper==1.8.4
 pandas
 scipy==1.9.0
