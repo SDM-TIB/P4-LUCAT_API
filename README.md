@@ -79,34 +79,21 @@ List of parameters for selecting a population.
 ```
 
 # Output
-|                All Rules                | PCA Confidence Score |            F1 Score             | Explanations    | 
-|:---------------------------------------:|:--------------------:|:-------------------------------:|:----------------|
-|IF a patient is in stage IIIB THEN the patient could have received oncological treatment  Chemotherapy-Radiotherapy |0.485507246|0.0432676788998173|
-The PCA Confidence score is 0.485507246. There are 141 patients  in stage IIIB. There are 203 patients could have received oncological treatment  Chemotherapy-Radiotherapy . 
-There are 67 out of 141 patients  in stage IIIB and also 67 out of 203 patients could have received oncological treatment  Chemotherapy-Radiotherapy .|
-|IF a patient has oncological treatment Adjuvant  THEN the patient could have received oncological treatment  Radiotherapy | 1 | 0.0397482616882085 | The PCA Confidence score is 1.0. 
-There are 60 patients has oncological treatment Adjuvant  . 
-There are 636 patients could have received oncological treatment  Radiotherapy . 
-There are 60 out of 60 patients has oncological treatment Adjuvant  and also 60 out of 636 patients could have received oncological treatment  Radiotherapy .|
+|                All Rules                | PCA Confidence Score |            F1 Score             | Explanations                                                                                                                                                                                                                                                                                                                          | 
+|:---------------------------------------:|:--------------------:|:-------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|IF a patient is in stage IIIB THEN the patient could have received oncological treatment  Chemotherapy-Radiotherapy |0.485507246|0.0432676788998173| The PCA Confidence score is 0.485507246. There are 141 patients  in stage IIIB. There are 203 patients could have received oncological treatment  Chemotherapy-Radiotherapy . There are 67 out of 141 patients  in stage IIIB and also 67 out of 203 patients could have received oncological treatment  Chemotherapy-Radiotherapy .  |
+|IF a patient has oncological treatment Adjuvant  THEN the patient could have received oncological treatment  Radiotherapy | 1 | 0.0397482616882085 | The PCA Confidence score is 1.0. There are 60 patients has oncological treatment Adjuvant. There are 636 patients could have received oncological treatment  Radiotherapy . There are 60 out of 60 patients has oncological treatment Adjuvant  and also 60 out of 636 patients could have received oncological treatment  Radiotherapy .|
 
 
-|                                               Positive Outcome Rules                                                | PCA Confidence Score |            F1 Score             | Explanations    | 
-|:-------------------------------------------------------------------------------------------------------------------:|:--------------------:|:-------------------------------:|:----------------|
-| IF a patient is in stage IIIB THEN the patient could have received oncological treatment  Chemotherapy-Radiotherapy |0.485507246|0.0432676788998173|
-The PCA Confidence score is 0.485507246. There are 141 patients  in stage IIIB. There are 203 patients could have received oncological treatment  Chemotherapy-Radiotherapy . 
-There are 67 out of 141 patients  in stage IIIB and also 67 out of 203 patients could have received oncological treatment  Chemotherapy-Radiotherapy .|
-|IF a patient has oncological treatment Adjuvant  THEN the patient could have received oncological treatment  Radiotherapy | 1 | 0.0397482616882085 | The PCA Confidence score is 1.0. 
-There are 60 patients has oncological treatment Adjuvant  . 
-There are 636 patients could have received oncological treatment  Radiotherapy . 
-There are 60 out of 60 patients has oncological treatment Adjuvant  and also 60 out of 636 patients could have received oncological treatment  Radiotherapy .|
+|                                               Positive Outcome Rules                                                | PCA Confidence Score |            F1 Score             | Explanations                                                                                                                                                                                                                                                                                                                             | 
+|:-------------------------------------------------------------------------------------------------------------------:|:--------------------:|:-------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| IF a patient is in stage IIIB THEN the patient could have received oncological treatment  Chemotherapy-Radiotherapy |0.485507246|0.0432676788998173| The PCA Confidence score is 0.485507246. There are 141 patients  in stage IIIB. There are 203 patients could have received oncological treatment  Chemotherapy-Radiotherapy .There are 67 out of 141 patients  in stage IIIB and also 67 out of 203 patients could have received oncological treatment  Chemotherapy-Radiotherapy .      |
+|IF a patient has oncological treatment Adjuvant  THEN the patient could have received oncological treatment  Radiotherapy | 1 | 0.0397482616882085 | The PCA Confidence score is 1.0.There are 60 patients has oncological treatment Adjuvant  .There are 636 patients could have received oncological treatment  Radiotherapy . There are 60 out of 60 patients has oncological treatment Adjuvant  and also 60 out of 636 patients could have received oncological treatment  Radiotherapy .|
 
 
 |                                               Negative Outcome Rules                                                | PCA Confidence Score |            F1 Score             | Explanations    | 
 |:-------------------------------------------------------------------------------------------------------------------:|:--------------------:|:-------------------------------:|:----------------|
-| IF a patient is in stage IIIB THEN the patient could have received oncological treatment  Chemotherapy-Radiotherapy |0.485507246|0.0432676788998173|
-The PCA Confidence score is 0.485507246. 
-There are 141 patients  in stage IIIB. There are 203 patients could have received oncological treatment  Chemotherapy-Radiotherapy . 
-There are 67 out of 141 patients  in stage IIIB and also 67 out of 203 patients could have received oncological treatment  Chemotherapy-Radiotherapy .|
+| IF a patient is in stage IIIB THEN the patient could have received oncological treatment  Chemotherapy-Radiotherapy |0.485507246|0.0432676788998173|The PCA Confidence score is 0.485507246.There are 141 patients  in stage IIIB. There are 203 patients could have received oncological treatment  Chemotherapy-Radiotherapy . There are 67 out of 141 patients  in stage IIIB and also 67 out of 203 patients could have received oncological treatment  Chemotherapy-Radiotherapy .|
 
 
 # 3) Compute the DDI rate of drugs for each treatment taken in a population.
