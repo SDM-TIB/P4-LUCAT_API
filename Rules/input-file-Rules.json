@@ -1,2 +1,11 @@
-{"Variables":["Gender","Smoking Habit","Organ affected by the familiar cancer","Cancer Stage","Histology","Molecular Markers","Oncological Treatment Type"],
-  "Values": ["Male","","","IIIA","","","Chemotherapy"]}
+{"Input": {"Variables": {
+        "Gender": "",
+        "Smoking Habit": "",
+        "Organ affected by the familiar cancer": "",
+        "Cancer Stage": "IIIB",
+        "Histology": "",
+        "Molecular Markers": "",
+        "PDL1 result": "",
+        "Oncological Treatment Type": "Chemotherapy",
+        "RulesHead": "OncologicalTreatment"
+    }}}
