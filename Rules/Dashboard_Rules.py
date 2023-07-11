@@ -21,15 +21,15 @@ head_dict = {'key': ['?a', '  <hasStage>', '  <IIIB>', '  <hasOncologicalTreatme
 
 
 
-def violin_plot(violin_Data):
-    # Replacing regex characters in DataFrame columns
-    violin_Data = violin_Data.replace(r'\?a|<|>|(\bhas\w*)', '', regex=True)
-    # violin_Data['Head'] = violin_Data['Head'].apply(lambda x: x.replace('?a <', ''))
-    sns.violinplot(x='Head', y='PCA_Confidence', data=violin_Data, color="0.6")
-    sns.stripplot(x='Head', y='PCA_Confidence', data=violin_Data, jitter=True)
-    plt.title('Distribution of PCA Confidence')
-    # plt.savefig('output/ViolinPlot.png')
-    plt.show()
+# def violin_plot(violin_Data):
+#     # Replacing regex characters in DataFrame columns
+#     violin_Data = violin_Data.replace(r'\?a|<|>|(\bhas\w*)', '', regex=True)
+#     # violin_Data['Head'] = violin_Data['Head'].apply(lambda x: x.replace('?a <', ''))
+#     sns.violinplot(x='Head', y='PCA_Confidence', data=violin_Data, color="0.6")
+#     sns.stripplot(x='Head', y='PCA_Confidence', data=violin_Data, jitter=True)
+#     plt.title('Distribution of PCA Confidence')
+#     # plt.savefig('output/ViolinPlot.png')
+#     plt.show()
 
 
 
@@ -106,7 +106,8 @@ def process(data_dict, body_dict, head_dict, my_dict):
 
     # Match list elements with DataFrame rows
     matched_df = df[df['Body'].str.contains('|'.join(values_list))]
-    violin_Data = matched_df.copy()
+    violin_Data = matched_df[['Head','PCA_Confidence']].copy()
+    violin_Data = violin_Data.replace(r'\?a|<|>|(\bhas\w*)', '', regex=True)
     pos_df, neg_df = mainPosNeg(matched_df)
 
     return matched_df, df4, violin_Data, pos_df, neg_df
@@ -149,11 +150,11 @@ def run_api(input_json):
     result3 = result_neg.rename(columns={"Rule": "Negative Outcome Rules"})
     result3 = result3.to_json(orient='records')
 
-    # violin_plot(violin_Data)
+    violin_Data = violin_Data.to_json(orient='records')
 
-    return result1, result2, result3
+    return result1, result2, result3, violin_Data
 
 
 
-# d1, d2, d3 = run_api(input_json)
-# print(d3)
+# d1, d2, d3, violin = run_api(input_json)
+
