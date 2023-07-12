@@ -131,10 +131,18 @@ def ruleTranslation(matched_df):
     return matched_df
 
 
-
 def run_api(input_json):
     my_dict = input_json['Input']['Variables']
     data1, data2, violin_Data, pos_df, neg_df = process(data_dict, body_dict, head_dict, my_dict)
+
+    violin_pos = pos_df[['Head', 'PCA_Confidence']]
+    violin_pos = violin_pos.replace(r'\?a|<|>|(\bhas\w*)', '', regex=True)
+    violin_pos = violin_pos.to_json(orient='records')
+
+    violin_neg = neg_df[['Head', 'PCA_Confidence']]
+    violin_neg = violin_neg.replace(r'\?a|<|>|(\bhas\w*)', '', regex=True)
+    violin_neg = violin_neg.to_json(orient='records')
+
     Rule_main = ruleTranslation(data1)
     PosRule = ruleTranslation(pos_df)
     NegRule = ruleTranslation(neg_df)
@@ -150,11 +158,11 @@ def run_api(input_json):
     result3 = result_neg.rename(columns={"Rule": "Negative Outcome Rules"})
     result3 = result3.to_json(orient='records')
 
-    violin_Data = violin_Data.to_json(orient='records')
+    # violin_Data = violin_Data.to_json(orient='records')
 
-    return result1, result2, result3, violin_Data
+    return result1, result2, result3, violin_pos, violin_neg
 
 
 
-# d1, d2, d3, violin = run_api(input_json)
+# d1, d2, d3, violin_pos, violin_neg = run_api(input_json)
 

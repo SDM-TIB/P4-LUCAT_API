@@ -57,8 +57,8 @@ def run_rules_api():
         logger.info("Error in the input format")
         r = "{results: 'Error in the input format'}"
     else:
-        main, pos, neg, violin = Dashboard_Rules.run_api(input_list)
-        r = {'main': main, 'pos': pos, 'neg': neg, 'violin': violin }
+        main, pos, neg, violin_pos, violin_neg = Dashboard_Rules.run_api(input_list)
+        r = {'main': main, 'pos': pos, 'neg': neg, 'violin_pos': violin_pos, 'violin_neg': violin_neg }
     logger.info("Sending the results: ")
     response = make_response(r, 200)
     response.mimetype = "application/json"
