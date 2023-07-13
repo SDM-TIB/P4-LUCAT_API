@@ -10,6 +10,7 @@ from Rules.Explaining_rulesHead_API import main_rulesHead
 from Rules.PosNeg_Rules import mainPosNeg
 from io import BytesIO
 from base64 import b64encode
+import json
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -85,7 +86,7 @@ def create_NL_template(data1, data2):
         text4.append(str(row['F1_Score']))
 
 
-    df = pd.DataFrame({'Rule': text1, 'PCA Confidence Score': text3, 'F1 Score': text4, 'Explanation': text2})
+    df = pd.DataFrame({'Rule': text1, 'pcaConfidenceScore': text3, 'f1Score': text4, 'explanation': text2})
 
     return df
 
@@ -104,7 +105,11 @@ def process(data_dict, body_dict, head_dict, my_dict):
 
     values_list = []
     for values in input_dict.values():
-        if values != '':
+        if isinstance(values, list):
+            for item in values:
+                filtered_values = item
+                values_list.append(filtered_values)
+        else:
             filtered_values = values
             values_list.append(filtered_values)
 
@@ -146,25 +151,24 @@ def run_api(input_json):
     PosRule = ruleTranslation(pos_df)
     NegRule = ruleTranslation(neg_df)
     result_main = create_NL_template(Rule_main, data2)
-    result1 = result_main.rename(columns={"Rule": "All Rules"})
-    result1[["PCA Confidence Score", "F1 Score"]] = result1[["PCA Confidence Score", "F1 Score"]].apply(pd.to_numeric)
+    result1 = result_main.rename(columns={"Rule": "allRules"})
+    result1[["pcaConfidenceScore", "f1Score"]] = result1[["pcaConfidenceScore", "f1Score"]].apply(pd.to_numeric)
     result1 = result1.to_json(orient='records')
 
     result_pos = create_NL_template(PosRule, data2)
-    result2= result_pos.rename(columns={"Rule": "Positive Outcome Rules"})
-    result2[["PCA Confidence Score", "F1 Score"]] = result2[["PCA Confidence Score", "F1 Score"]].apply(pd.to_numeric)
+    result2= result_pos.rename(columns={"Rule": "positiveOutcomeRules"})
+    result2[["pcaConfidenceScore", "f1Score"]] = result2[["pcaConfidenceScore", "f1Score"]].apply(pd.to_numeric)
     result2 = result2.to_json(orient='records')
 
     result_neg = create_NL_template(NegRule, data2)
-    result3 = result_neg.rename(columns={"Rule": "Negative Outcome Rules"})
-    result3[["PCA Confidence Score", "F1 Score"]] = result3[["PCA Confidence Score", "F1 Score"]].apply(pd.to_numeric)
+    result3 = result_neg.rename(columns={"Rule": "negativeOutcomeRules"})
+    result3[["pcaConfidenceScore", "f1Score"]] = result3[["pcaConfidenceScore", "f1Score"]].apply(pd.to_numeric)
     result3 = result3.to_json(orient='records')
 
     # violin_Data = violin_Data.to_json(orient='records')
 
-    return result1, result2, result3, pos_plot, neg_plot
+    return json.loads(result1), json.loads(result2), json.loads(result3), pos_plot, neg_plot
 
 
 
-# d1, d2, d3, violin_pos, violin_neg = run_api(input_json)
 
