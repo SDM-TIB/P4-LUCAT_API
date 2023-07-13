@@ -8,6 +8,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from Rules.Explaining_rulesHead_API import main_rulesHead
 from Rules.PosNeg_Rules import mainPosNeg
+from io import BytesIO
+from base64 import b64encode
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -21,15 +23,17 @@ head_dict = {'key': ['?a', '  <hasStage>', '  <IIIB>', '  <hasOncologicalTreatme
 
 
 
-# def violin_plot(violin_Data):
-#     # Replacing regex characters in DataFrame columns
-#     violin_Data = violin_Data.replace(r'\?a|<|>|(\bhas\w*)', '', regex=True)
-#     # violin_Data['Head'] = violin_Data['Head'].apply(lambda x: x.replace('?a <', ''))
-#     sns.violinplot(x='Head', y='PCA_Confidence', data=violin_Data, color="0.6")
-#     sns.stripplot(x='Head', y='PCA_Confidence', data=violin_Data, jitter=True)
-#     plt.title('Distribution of PCA Confidence')
-#     # plt.savefig('output/ViolinPlot.png')
-#     plt.show()
+def violin_plot(violin_Data):
+    # Replacing regex characters in DataFrame columns
+    violin_Data = violin_Data.replace(r'\?a|<|>|(\bhas\w*)', '', regex=True)
+    plt.figure(figsize=(1280 / 100, 480 / 100), dpi=100)
+    sns.violinplot(x='Head', y='PCA_Confidence', data=violin_Data, color="0.6")
+    sns.stripplot(x='Head', y='PCA_Confidence', data=violin_Data, jitter=True)
+    plt.title('Distribution of PCA Confidence')
+    buffer = BytesIO()
+    plt.savefig(buffer, format='png', dpi=100)
+    plt.close()
+    return b64encode(buffer.getvalue()).decode('utf-8').replace('\n', '')
 
 
 
@@ -135,32 +139,30 @@ def run_api(input_json):
     my_dict = input_json['Input']['Variables']
     data1, data2, violin_Data, pos_df, neg_df = process(data_dict, body_dict, head_dict, my_dict)
 
-    violin_pos = pos_df[['Head', 'PCA_Confidence']]
-    violin_pos = violin_pos.replace(r'\?a|<|>|(\bhas\w*)', '', regex=True)
-    violin_pos = violin_pos.to_json(orient='records')
-
-    violin_neg = neg_df[['Head', 'PCA_Confidence']]
-    violin_neg = violin_neg.replace(r'\?a|<|>|(\bhas\w*)', '', regex=True)
-    violin_neg = violin_neg.to_json(orient='records')
+    pos_plot = violin_plot(pos_df)
+    neg_plot = violin_plot(neg_df)
 
     Rule_main = ruleTranslation(data1)
     PosRule = ruleTranslation(pos_df)
     NegRule = ruleTranslation(neg_df)
     result_main = create_NL_template(Rule_main, data2)
     result1 = result_main.rename(columns={"Rule": "All Rules"})
+    result1[["PCA Confidence Score", "F1 Score"]] = result1[["PCA Confidence Score", "F1 Score"]].apply(pd.to_numeric)
     result1 = result1.to_json(orient='records')
 
     result_pos = create_NL_template(PosRule, data2)
     result2= result_pos.rename(columns={"Rule": "Positive Outcome Rules"})
+    result2[["PCA Confidence Score", "F1 Score"]] = result2[["PCA Confidence Score", "F1 Score"]].apply(pd.to_numeric)
     result2 = result2.to_json(orient='records')
 
     result_neg = create_NL_template(NegRule, data2)
     result3 = result_neg.rename(columns={"Rule": "Negative Outcome Rules"})
+    result3[["PCA Confidence Score", "F1 Score"]] = result3[["PCA Confidence Score", "F1 Score"]].apply(pd.to_numeric)
     result3 = result3.to_json(orient='records')
 
     # violin_Data = violin_Data.to_json(orient='records')
 
-    return result1, result2, result3, violin_pos, violin_neg
+    return result1, result2, result3, pos_plot, neg_plot
 
 
 
