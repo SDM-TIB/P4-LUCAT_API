@@ -13,6 +13,7 @@ import os
 from DDI import Dashboard_DDI
 from Rules import Dashboard_Rules
 from SS_DDI_Rate import treatment_generation, ddi_rate
+from DFI import effect_ddi_dfi
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -74,6 +75,21 @@ def ddi_wedge():
         r = "{results: 'Error in the input format'}"
     else:
         response = ddi_rate.compute_ddi_rate(treatment_generation.compute_treatment(input_list))
+        r = json.dumps(response, indent=4)
+    response = make_response(r, 200)
+    response.mimetype = "application/json"
+    return response
+
+
+@app.route('/DFI', methods=['POST'])
+def dfi_effect():
+    if (not request.json):
+        abort(400)
+    input_list = request.json
+    if len(input_list) == 0:
+        r = "{results: 'Error in the input format'}"
+    else:
+        response = effect_ddi_dfi.get_DDI_DFI(input_list)
         r = json.dumps(response, indent=4)
     response = make_response(r, 200)
     response.mimetype = "application/json"
