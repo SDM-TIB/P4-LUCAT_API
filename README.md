@@ -619,3 +619,65 @@ The DDI rate for each drug and the most DDI drug are computed for each treatment
     "['other', 'docetaxel']": "No DDIs"
 }
 ```
+
+# 4) Get the DFIs and DDIs.
+## Input
+List of drugs CUIs and foods CUIs
+```
+	{
+        "Input": {"OncologicalDrugs": ["C0068334", "C0031937", "C0022209", "C4519536", "C3852938", "C0002333"],
+                  "Non_OncologicalDrugs": ["C0000956", "C0008024", "C0002823", "C0005640"], "Foods": ["C0001975", "C0019588", "C0947567", "C0006644", "C0032821", "C0813171"]}
+    }
+```
+## Output
+List of DFIs and DDIs and list of drugs and foods effects.
+```
+	{
+    "DDIs": [
+        "nabumetone can decrease hemorrhage of acenocoumarol",
+        "acenocoumarol can decrease hemorrhage of nabumetone",
+        "acenocoumarol can decrease hemorrhage of ancrod",
+        "ancrod can decrease hemorrhage of acenocoumarol",
+        "acenocoumarol can decrease contusions of chenodeoxycholic acid",
+        "chenodeoxycholic acid can decrease contusions of acenocoumarol",
+        "acenocoumarol can decrease hemorrhage of chenodeoxycholic acid",
+        "chenodeoxycholic acid can decrease hemorrhage of acenocoumarol",
+        "ancrod can decrease contusions of chenodeoxycholic acid",
+        "chenodeoxycholic acid can decrease contusions of ancrod",
+        "ancrod can decrease hemorrhage of chenodeoxycholic acid",
+        "chenodeoxycholic acid can decrease hemorrhage of ancrod",
+        "dicumarol can decrease hemorrhage of ancrod",
+        "ancrod can decrease hemorrhage of dicumarol",
+        "dicumarol can decrease contusions of chenodeoxycholic acid",
+        "chenodeoxycholic acid can decrease contusions of dicumarol",
+        "dicumarol can decrease hemorrhage of chenodeoxycholic acid",
+        "chenodeoxycholic acid can decrease hemorrhage of dicumarol",
+        "nabumetone can decrease hemorrhage of ancrod",
+        "ancrod can decrease hemorrhage of nabumetone",
+        "nabumetone can decrease hemorrhage of dicumarol",
+        "dicumarol can decrease hemorrhage of nabumetone",
+        "pindolol can decrease aspects of adverse effects of acenocoumarol",
+        "acenocoumarol can decrease aspects of adverse effects of pindolol",
+        "pindolol can decrease aspects of adverse effects of dicumarol",
+        "dicumarol can decrease aspects of adverse effects of pindolol",
+        "alprazolam can decrease aspects of adverse effects of pindolol",
+        "pindolol can decrease aspects of adverse effects of alprazolam",
+        "isoniazid can decrease malignant carcinoid syndrome of pindolol",
+        "pindolol can decrease malignant carcinoid syndrome of isoniazid"
+    ],
+    "DrugEffects": [],
+    "DFIs": [
+        "alcohol can decrease additive_drug_effects of pindolol",
+        "alcohol can decrease gastrointestinal_irritation of nabumetone",
+        "histamine can decrease headaches of isoniazid",
+        "st_johns_wort can decrease serum_concentration of letermovir",
+        "st_johns_wort can decrease serum_concentration of glecaprevir",
+        "alcohol can decrease isoniazid of isoniazid",
+        "alcohol can decrease central_nervous_system_depressants of alprazolam"
+    ],
+    "FoodEffects": [
+        "The effectiveness of letermovir is decreased because st_johns_wort can decrease serum_concentration of letermovir",
+        "The effectiveness of glecaprevir is decreased because st_johns_wort can decrease serum_concentration of glecaprevir"
+    ]
+}
+```
