@@ -28,7 +28,9 @@ def build_query_p4lucat(input_cui_uri):
     prefix p4-lucat: <http://research.tib.eu/p4-lucat/vocab/>
     select distinct ?EffectorLabel ?AffectedDrugLabel ?Effect  ?Impact ?precipitant ?objectDrug
         where {
-        ?ddi a p4-lucat:DrugDrugInteraction .
+        {{?ddi a p4-lucat:PharmacokyneticDrugDrugInteraction.  BIND('Pharmacokinetics' as ?type)} 
+        UNION {?sim a p4-lucat:PharmacodynamicDrugDrugInteraction . 
+                            ?sim <http://www.w3.org/2000/01/rdf-schema#subClassOf> ?ddi.BIND('Pharmadynamics' as ?type) }}
         ?ddi p4-lucat:precipitantDrug ?precipitant . 
         ?ddi p4-lucat:objectDrug ?objectDrug .
         ?ddi p4-lucat:effect ?o . 
@@ -322,8 +324,8 @@ def get_DDI_DFI(input_list):
 
 if __name__ == '__main__':
     input_list = {
-        "Input": {"OncologicalDrugs": ["C0068334", "C0031937", "C0022209", "C4519536", "C3852938", "C0002333"],
-                  "Non_OncologicalDrugs": ["C0000956", "C0008024", "C0002823", "C0005640"], "Foods": ["C0001975", "C0019588", "C0947567", "C0006644", "C0032821", "C0813171"]}
+        "Input": {"OncologicalDrugs": ["C0015133","C0079083","C0377401","C0377401","C0008838","C0078257"],
+                  "Non_OncologicalDrugs": ["C0009214","C0028978","C0064636","C0207683","C1871526"], "Foods": ["C0001975", "C0019588", "C0947567", "C0006644", "C0032821", "C0813171"]}
     }
     ddi_dfi, ddi, dfi, set_dsd_label, set_food_label = extract_ddi_dfi(input_list)
     df_ddi, df_dfi = get_deduced_interaction(ddi, dfi, set_dsd_label)
