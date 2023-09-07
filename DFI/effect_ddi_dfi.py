@@ -45,13 +45,12 @@ def build_query_p4lucat(input_cui_uri):
 
 
 def store_pharmacokinetic_ddi(effect):
-    if effect in ['Excretion_rate', 'Excretory_function', 'Excretion', 'excretion rate', 'excretion_rate',
-                  'Excretion rate', 'Excretion Rate']:
+    if effect in ['excretion_rate', 'excretory_function', 'excretion', 'excretion rate']:
         effect = 'excretion'
-    elif effect in ['Process_of_absorption', 'Absorption']:
+    elif effect in ['process_of_absorption', 'process of absorption', 'absorption']:
         effect = 'absorption'
-    elif effect in ['Serum_concentration', 'Serum_concentration_of', 'Serum_level', 'Serum_globulin_level',
-                    'Metabolite', 'Active_metabolites', 'serum concentration']:
+    elif effect in ['serum_concentration', 'serum_concentration_of', 'serum_level', 'serum_globulin_level',
+                    'metabolite', 'active_metabolites', 'serum concentration']:
         effect = 'serum_concentration'
     elif effect in ['Metabolism']:
         effect = 'metabolism'
@@ -85,7 +84,7 @@ def query_result_p4lucat(query, labels):
     dd = {'EffectorLabel': [], 'AffectedDrugLabel': [], 'Effect': [], 'Impact': [], 'precipitant': [],
           'objectDrug': []}
     for r in results['results']['bindings']:
-        effect = r['Effect']['value']
+        effect = r['Effect']['value'].lower()
         effect, pharmadynamic = store_pharmacokinetic_ddi(effect)
         dd['Effect'].append(effect.lower())
         impact = r['Impact']['value']
@@ -200,6 +199,7 @@ def extract_ddi_dfi(file):
     """extracting DDIs"""
     labels = get_Labels(input_cui_uri)
     query = build_query_p4lucat(input_cui_uri)
+    # print(query)
     union = query_result_p4lucat(query, labels)
     union = combine_col(union, ['Effect', 'Impact'])
     union = union.reset_index()
@@ -212,6 +212,7 @@ def extract_ddi_dfi(file):
     label_food = get_label_food(create_filter_cui(foods))
     labels = labels + label_food
     query = build_query_dfi(input_cui_uri)
+    # print(query)
     dfi = query_result_dfi(query, labels)
     dfi = combine_col(dfi, ['Effect', 'Impact'])
     dfi = dfi.reset_index()
