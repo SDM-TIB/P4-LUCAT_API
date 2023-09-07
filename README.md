@@ -737,3 +737,86 @@ List of DFIs and DDIs and list of drugs and foods effects.
     ]
 }
 ```
+
+# 5) Get the recommendations of a set of drugs. 
+## Input
+List of drugs CUIs
+```
+	{
+    "Input": {"Drugs": ["C0009214","C0028978","C0064636","C0207683","C1871526"]}
+    }
+```
+## Output
+List of recommendations for each drug.
+```
+{
+    "Recommendations": [
+        {
+            "EffectorLabel": "alcohol",
+            "AffectedDrugLabel": "codeine",
+            "Recommendation": "Avoid",
+            "Time": null
+        },
+        {
+            "EffectorLabel": "food",
+            "AffectedDrugLabel": "omeprazole",
+            "Recommendation": "Take",
+            "Time": "30-60 minutes before"
+        },
+        {
+            "EffectorLabel": "food",
+            "AffectedDrugLabel": "codeine",
+            "Recommendation": "Take",
+            "Time": null
+        },
+        {
+            "EffectorLabel": "food",
+            "AffectedDrugLabel": "lamotrigine",
+            "Recommendation": "Take",
+            "Time": null
+        },
+        {
+            "EffectorLabel": "ginkgo_biloba",
+            "AffectedDrugLabel": "nafamostat",
+            "Recommendation": "Avoid",
+            "Time": null
+        },
+        {
+            "EffectorLabel": "garlic",
+            "AffectedDrugLabel": "nafamostat",
+            "Recommendation": "Avoid",
+            "Time": null
+        },
+        {
+            "EffectorLabel": "bilberry",
+            "AffectedDrugLabel": "nafamostat",
+            "Recommendation": "Avoid",
+            "Time": null
+        },
+        {
+            "EffectorLabel": "ginger",
+            "AffectedDrugLabel": "nafamostat",
+            "Recommendation": "Avoid",
+            "Time": null
+        },
+        {
+            "EffectorLabel": "piracetam",
+            "AffectedDrugLabel": "nafamostat",
+            "Recommendation": "Avoid",
+            "Time": null
+        },
+        {
+            "EffectorLabel": "danshen",
+            "AffectedDrugLabel": "nafamostat",
+            "Recommendation": "Avoid",
+            "Time": null
+        },
+        {
+            "EffectorLabel": "food",
+            "AffectedDrugLabel": "raltegravir",
+            "Recommendation": "Take",
+            "Time": null
+        }
+    ]
+}
+```

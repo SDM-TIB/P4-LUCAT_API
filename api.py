@@ -13,7 +13,7 @@ import os
 from DDI import Dashboard_DDI
 from Rules import Dashboard_Rules
 from SS_DDI_Rate import treatment_generation, ddi_rate
-from DFI import effect_ddi_dfi
+from DFI import effect_ddi_dfi, drug_food_recomendation
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -96,12 +96,28 @@ def dfi_effect():
     return response
 
 
+@app.route('/DFR', methods=['POST'])
+def d_recommendation():
+    if (not request.json):
+        abort(400)
+    input_list = request.json
+    if len(input_list) == 0:
+        r = "{results: 'Error in the input format'}"
+    else:
+        response = drug_food_recomendation.get_DFR(input_list)
+        r = json.dumps(response, indent=4)
+    response = make_response(r, 200)
+    response.mimetype = "application/json"
+    return response
+
+
 def main(*args):
     if len(args) == 1:
         myhost = args[0]
     else:
         myhost = "0.0.0.0"
     app.run(debug=False, host=myhost)
-    
+
+
 if __name__ == '__main__':
      main(*sys.argv[1:])
