@@ -143,19 +143,19 @@ The DDI rate for each drug and the most DDI drug are computed for each treatment
 {
     "['cisplatin', 'vinorelbine', 'ceftriaxone', 'levofloxacin']": {
         "DDI_rate": {
-            "cisplatin": 0.7083333333333334,
-            "levofloxacin": 0.16666666666666666,
-            "ceftriaxone": 0.16666666666666666,
-            "vinorelbine": 0.0
+            "cisplatin": 0.4444444444444444,
+            "ceftriaxone": 0.0,
+            "vinorelbine": 0.0,
+            "levofloxacin": 0.0
         },
         "most_DDI_drug": [
             "cisplatin"
         ],
         "pharmacokinetic_DDI_rate": {
-            "cisplatin": 0.4166666666666667,
-            "levofloxacin": 0.3333333333333333,
-            "ceftriaxone": 0.3333333333333333,
-            "vinorelbine": 0.0
+            "cisplatin": 0.3333333333333333,
+            "ceftriaxone": 0.0,
+            "vinorelbine": 0.0,
+            "levofloxacin": 0.0
         },
         "most_DDI_drug_pharmacokinetic": [
             "cisplatin"
@@ -179,31 +179,31 @@ The DDI rate for each drug and the most DDI drug are computed for each treatment
             "cisplatin"
         ]
     },
-    "['vinorelbine', 'carboplatin', 'atenolol', 'enalapril', 'metformin', 'omeprazole', 'amlodipine', 'atorvastatin', 'diabetes mellitus, non-insulin-dependent', 'regular insulin, human']": {
+    "['vinorelbine', 'carboplatin', 'atenolol', 'enalapril', 'metformin', 'omeprazole', 'amlodipine', 'atorvastatin', 'diabetes mellitus, non-insulin-dependent', 'insulin, regular, human']": {
         "DDI_rate": {
-            "atorvastatin": 0.24131944444444445,
-            "atenolol": 0.19618055555555555,
-            "metformin": 0.1284722222222222,
-            "amlodipine": 0.10590277777777778,
-            "enalapril": 0.059027777777777776,
-            "vinorelbine": 0.057291666666666664,
-            "carboplatin": 0.03819444444444445,
-            "regular insulin, human": 0.027777777777777776,
-            "omeprazole": 0.026041666666666668
+            "atorvastatin": 0.18162393162393162,
+            "amlodipine": 0.13034188034188035,
+            "atenolol": 0.12606837606837606,
+            "enalapril": 0.05128205128205128,
+            "vinorelbine": 0.05128205128205128,
+            "metformin": 0.05128205128205128,
+            "omeprazole": 0.03205128205128205,
+            "insulin, regular, human": 0.01282051282051282,
+            "carboplatin": 0.004273504273504274
         },
         "most_DDI_drug": [
             "atorvastatin"
         ],
         "pharmacokinetic_DDI_rate": {
-            "atorvastatin": 0.5833333333333334,
-            "atenolol": 0.4166666666666667,
+            "atorvastatin": 0.25,
+            "atenolol": 0.2037037037037037,
             "vinorelbine": 0.1388888888888889,
             "omeprazole": 0.1388888888888889,
             "amlodipine": 0.1388888888888889,
-            "carboplatin": 0.07407407407407407,
-            "metformin": 0.07407407407407407,
-            "regular insulin, human": 0.0,
-            "enalapril": 0.0
+            "enalapril": 0.0,
+            "carboplatin": 0.0,
+            "insulin, regular, human": 0.0,
+            "metformin": 0.0
         },
         "most_DDI_drug_pharmacokinetic": [
             "atorvastatin"
@@ -211,7 +211,7 @@ The DDI rate for each drug and the most DDI drug are computed for each treatment
     },
     "['cisplatin', 'vinorelbine', 'omeprazole']": {
         "DDI_rate": {
-            "cisplatin": 0.4444444444444444,
+            "cisplatin": 0.3333333333333333,
             "vinorelbine": 0.0,
             "omeprazole": 0.0
         },
@@ -231,63 +231,65 @@ The DDI rate for each drug and the most DDI drug are computed for each treatment
     },
     "['carboplatin', 'paclitaxel', 'tramadol']": {
         "DDI_rate": {
-            "carboplatin": 0.6,
-            "paclitaxel": 0.3333333333333333,
-            "tramadol": 0.26666666666666666
+            "paclitaxel": 0.25,
+            "carboplatin": 0.25,
+            "tramadol": 0.25
         },
         "most_DDI_drug": [
-            "carboplatin"
+            "paclitaxel",
+            "carboplatin",
+            "tramadol"
         ],
         "pharmacokinetic_DDI_rate": {
-            "tramadol": 0.4444444444444444,
-            "carboplatin": 0.1111111111111111,
-            "paclitaxel": 0.1111111111111111
+            "tramadol": 0.3333333333333333,
+            "paclitaxel": 0.1111111111111111,
+            "carboplatin": 0.0
         },
         "most_DDI_drug_pharmacokinetic": [
             "tramadol"
         ]
     },
-    "['nivolumab', 'omeprazole', 'diabetes mellitus, non-insulin-dependent', 'regular insulin, human']": "No DDIs",
+    "['nivolumab', 'omeprazole', 'diabetes mellitus, non-insulin-dependent', 'insulin, regular, human']": "No DDIs",
     "['cisplatin', 'vinorelbine', 'enalapril', 'omeprazole', 'atorvastatin']": {
         "DDI_rate": {
-            "atorvastatin": 0.23333333333333334,
-            "cisplatin": 0.16666666666666666,
-            "omeprazole": 0.03333333333333333,
-            "vinorelbine": 0.0,
-            "enalapril": 0.0
+            "atorvastatin": 0.28,
+            "cisplatin": 0.12,
+            "omeprazole": 0.04,
+            "enalapril": 0.0,
+            "vinorelbine": 0.0
         },
         "most_DDI_drug": [
             "atorvastatin"
         ],
         "pharmacokinetic_DDI_rate": {
-            "atorvastatin": 0.2,
             "cisplatin": 0.2,
             "omeprazole": 0.2,
-            "vinorelbine": 0.0,
-            "enalapril": 0.0
+            "atorvastatin": 0.2,
+            "enalapril": 0.0,
+            "vinorelbine": 0.0
         },
         "most_DDI_drug_pharmacokinetic": [
-            "atorvastatin",
             "cisplatin",
-            "omeprazole"
+            "omeprazole",
+            "atorvastatin"
         ]
     },
     "['paclitaxel', 'omeprazole']": {
         "DDI_rate": {
-            "omeprazole": 0.0,
-            "paclitaxel": 0.0
+            "paclitaxel": 0.0,
+            "omeprazole": 0.0
         },
         "most_DDI_drug": [
-            "omeprazole",
-            "paclitaxel"
+            "paclitaxel",
+            "omeprazole"
         ],
         "pharmacokinetic_DDI_rate": {
-            "omeprazole": 0.0,
-            "paclitaxel": 0.0
+            "paclitaxel": 0.0,
+            "omeprazole": 0.0
         },
         "most_DDI_drug_pharmacokinetic": [
-            "omeprazole",
-            "paclitaxel"
+            "paclitaxel",
+            "omeprazole"
         ]
     },
     "['atezolizumab', 'albuterol', 'enalapril']": {
@@ -310,146 +312,147 @@ The DDI rate for each drug and the most DDI drug are computed for each treatment
     },
     "['carboplatin', 'pemetrexed', 'simvastatin']": {
         "DDI_rate": {
-            "carboplatin": 0.0,
-            "pemetrexed": 0.0
+            "pemetrexed": 0.0,
+            "carboplatin": 0.0
         },
         "most_DDI_drug": [
-            "carboplatin",
-            "pemetrexed"
+            "pemetrexed",
+            "carboplatin"
         ],
         "pharmacokinetic_DDI_rate": {
-            "carboplatin": 0,
-            "pemetrexed": 0
+            "pemetrexed": 0,
+            "carboplatin": 0
         },
         "most_DDI_drug_pharmacokinetic": [
-            "carboplatin",
-            "pemetrexed"
+            "pemetrexed",
+            "carboplatin"
         ]
     },
-    "['cyclophosphamide', 'doxorubicin', 'antibiotics', 'omeprazole', 'vincristine', 'daptomycin']": {
+    "['carboplatin', 'antibiotics', 'omeprazole', 'daptomycin', 'vp-16']": {
         "DDI_rate": {
-            "vincristine": 0.9125,
-            "doxorubicin": 0.3875,
-            "cyclophosphamide": 0.275,
-            "omeprazole": 0.125,
-            "daptomycin": 0.0
+            "daptomycin": 0.0,
+            "carboplatin": 0.0
         },
         "most_DDI_drug": [
-            "vincristine"
+            "daptomycin",
+            "carboplatin"
         ],
         "pharmacokinetic_DDI_rate": {
-            "omeprazole": 0.3333333333333333,
-            "doxorubicin": 0.16666666666666666,
-            "vincristine": 0.16666666666666666,
-            "cyclophosphamide": 0.06666666666666667,
-            "daptomycin": 0.0
+            "daptomycin": 0.0,
+            "carboplatin": 0.0
         },
         "most_DDI_drug_pharmacokinetic": [
-            "omeprazole"
+            "daptomycin",
+            "carboplatin"
         ]
     },
-    "['paclitaxel', 'simvastatin']": {
+    "['simvastatin', 'cyclophosphamide', 'doxorubicin', 'vincristine']": {
         "DDI_rate": {
-            "paclitaxel": 0.0,
-            "simvastatin": 0.0
+            "vincristine": 0.25,
+            "cyclophosphamide": 0.25,
+            "simvastatin": 0.16666666666666666,
+            "doxorubicin": 0.16666666666666666
+        },
+        "most_DDI_drug": [
+            "vincristine",
+            "cyclophosphamide"
+        ],
+        "pharmacokinetic_DDI_rate": {
+            "simvastatin": 0.08333333333333333,
+            "vincristine": 0.0,
+            "doxorubicin": 0.0,
+            "cyclophosphamide": 0.0
+        },
+        "most_DDI_drug_pharmacokinetic": [
+            "simvastatin"
+        ]
+    },
+    "['paclitaxel', 'omeprazole', 'atorvastatin']": {
+        "DDI_rate": {
+            "paclitaxel": 0.6666666666666666,
+            "atorvastatin": 0.6666666666666666,
+            "omeprazole": 0.6666666666666666
         },
         "most_DDI_drug": [
             "paclitaxel",
-            "simvastatin"
-        ],
-        "pharmacokinetic_DDI_rate": {
-            "paclitaxel": 0.0,
-            "simvastatin": 0.0
-        },
-        "most_DDI_drug_pharmacokinetic": [
-            "paclitaxel",
-            "simvastatin"
-        ]
-    },
-    "['vinorelbine', 'carboplatin', 'omeprazole', 'atorvastatin']": {
-        "DDI_rate": {
-            "carboplatin": 0.0,
-            "vinorelbine": 0.0,
-            "atorvastatin": 0.0,
-            "omeprazole": 0.0
-        },
-        "most_DDI_drug": [
-            "carboplatin",
-            "vinorelbine",
             "atorvastatin",
             "omeprazole"
         ],
         "pharmacokinetic_DDI_rate": {
-            "carboplatin": 0.0,
-            "vinorelbine": 0.0,
-            "atorvastatin": 0.0,
-            "omeprazole": 0.0
+            "paclitaxel": 0.6666666666666666,
+            "atorvastatin": 0.6666666666666666,
+            "omeprazole": 0.6666666666666666
         },
         "most_DDI_drug_pharmacokinetic": [
-            "carboplatin",
-            "vinorelbine",
+            "paclitaxel",
             "atorvastatin",
             "omeprazole"
         ]
     },
-    "['cisplatin', 'pemetrexed', 'metformin']": {
+    "['vinorelbine', 'carboplatin', 'metformin']": {
         "DDI_rate": {
-            "pemetrexed": 0.75,
-            "cisplatin": 0.5,
-            "metformin": 0.25
+            "carboplatin": 0.2222222222222222,
+            "vinorelbine": 0.0,
+            "metformin": 0.0
         },
         "most_DDI_drug": [
-            "pemetrexed"
+            "carboplatin"
         ],
         "pharmacokinetic_DDI_rate": {
-            "metformin": 0.5,
-            "pemetrexed": 0.5,
-            "cisplatin": 0.3333333333333333
+            "vinorelbine": 0.0,
+            "metformin": 0.0,
+            "carboplatin": 0.0
         },
         "most_DDI_drug_pharmacokinetic": [
+            "vinorelbine",
             "metformin",
-            "pemetrexed"
+            "carboplatin"
         ]
     },
-    "['carboplatin', 'omeprazole', 'simvastatin', 'vp-16']": {
+    "['cisplatin', 'pemetrexed', 'omeprazole', 'simvastatin']": {
         "DDI_rate": {
-            "omeprazole": 0.0,
-            "simvastatin": 0.0
+            "pemetrexed": 0.8333333333333334,
+            "cisplatin": 0.8333333333333334,
+            "simvastatin": 0.5,
+            "omeprazole": 0.5
         },
         "most_DDI_drug": [
-            "omeprazole",
-            "simvastatin"
+            "pemetrexed",
+            "cisplatin"
         ],
         "pharmacokinetic_DDI_rate": {
-            "omeprazole": 0.0,
-            "simvastatin": 0.0
+            "pemetrexed": 1.0,
+            "simvastatin": 1.0,
+            "cisplatin": 1.0,
+            "omeprazole": 1.0
         },
         "most_DDI_drug_pharmacokinetic": [
-            "omeprazole",
-            "simvastatin"
+            "pemetrexed",
+            "simvastatin",
+            "cisplatin",
+            "omeprazole"
         ]
     },
-    "['carboplatin', 'paclitaxel', 'atenolol', 'atenolol 50 mg oral tablet']": {
+    "['carboplatin', 'atenolol', 'atenolol 50 mg oral tablet', 'vp-16']": "No DDIs",
+    "['carboplatin', 'paclitaxel']": {
         "DDI_rate": {
-            "paclitaxel": 0.5,
-            "carboplatin": 0.0,
-            "atenolol": 0.0
-        },
-        "most_DDI_drug": [
-            "paclitaxel"
-        ],
-        "pharmacokinetic_DDI_rate": {
-            "carboplatin": 0.0,
             "paclitaxel": 0.0,
-            "atenolol": 0.0
+            "carboplatin": 0.0
+        },
+        "most_DDI_drug": [
+            "paclitaxel",
+            "carboplatin"
+        ],
+        "pharmacokinetic_DDI_rate": {
+            "paclitaxel": 0,
+            "carboplatin": 0
         },
         "most_DDI_drug_pharmacokinetic": [
-            "carboplatin",
             "paclitaxel",
-            "atenolol"
+            "carboplatin"
         ]
     },
-    "['gemcitabine', 'carboplatin', 'omeprazole']": {
+    "['gemcitabine', 'carboplatin']": {
         "DDI_rate": {
             "gemcitabine": 0.0,
             "carboplatin": 0.0
@@ -469,96 +472,78 @@ The DDI rate for each drug and the most DDI drug are computed for each treatment
     },
     "['vinorelbine', 'carboplatin']": {
         "DDI_rate": {
-            "carboplatin": 0.0,
-            "vinorelbine": 0.0
+            "vinorelbine": 0.0,
+            "carboplatin": 0.0
         },
         "most_DDI_drug": [
-            "carboplatin",
-            "vinorelbine"
+            "vinorelbine",
+            "carboplatin"
         ],
         "pharmacokinetic_DDI_rate": {
-            "carboplatin": 0,
-            "vinorelbine": 0
+            "vinorelbine": 0,
+            "carboplatin": 0
         },
         "most_DDI_drug_pharmacokinetic": [
-            "carboplatin",
-            "vinorelbine"
+            "vinorelbine",
+            "carboplatin"
         ]
     },
     "['bevacizumab', 'carboplatin', 'paclitaxel']": {
         "DDI_rate": {
-            "carboplatin": 1.3333333333333333,
-            "bevacizumab": 1.3333333333333333,
-            "paclitaxel": 1.3333333333333333
+            "paclitaxel": 0.6666666666666666,
+            "carboplatin": 0.6666666666666666,
+            "bevacizumab": 0.6666666666666666
         },
         "most_DDI_drug": [
+            "paclitaxel",
             "carboplatin",
-            "bevacizumab",
-            "paclitaxel"
+            "bevacizumab"
         ],
         "pharmacokinetic_DDI_rate": {
+            "paclitaxel": 0,
             "carboplatin": 0,
-            "bevacizumab": 0,
-            "paclitaxel": 0
+            "bevacizumab": 0
         },
         "most_DDI_drug_pharmacokinetic": [
+            "paclitaxel",
             "carboplatin",
-            "bevacizumab",
-            "paclitaxel"
+            "bevacizumab"
         ]
     },
     "['cisplatin', 'pemetrexed']": {
         "DDI_rate": {
-            "cisplatin": 0.0,
-            "pemetrexed": 0.0
+            "pemetrexed": 0.0,
+            "cisplatin": 0.0
         },
         "most_DDI_drug": [
-            "cisplatin",
-            "pemetrexed"
+            "pemetrexed",
+            "cisplatin"
         ],
         "pharmacokinetic_DDI_rate": {
-            "cisplatin": 0,
-            "pemetrexed": 0
+            "pemetrexed": 0,
+            "cisplatin": 0
         },
         "most_DDI_drug_pharmacokinetic": [
-            "cisplatin",
-            "pemetrexed"
+            "pemetrexed",
+            "cisplatin"
         ]
     },
     "['cisplatin', 'docetaxel']": {
         "DDI_rate": {
-            "cisplatin": 0.0,
-            "docetaxel": 0.0
+            "docetaxel": 0.0,
+            "cisplatin": 0.0
         },
         "most_DDI_drug": [
-            "cisplatin",
-            "docetaxel"
+            "docetaxel",
+            "cisplatin"
         ],
         "pharmacokinetic_DDI_rate": {
-            "cisplatin": 0,
-            "docetaxel": 0
+            "docetaxel": 0,
+            "cisplatin": 0
         },
         "most_DDI_drug_pharmacokinetic": [
-            "cisplatin",
-            "docetaxel"
-        ]
-    },
-    "['carboplatin', 'paclitaxel']": {
-        "DDI_rate": {
-            "carboplatin": 0.0,
-            "paclitaxel": 0.0
-        },
-        "most_DDI_drug": [
-            "carboplatin",
-            "paclitaxel"
-        ],
-        "pharmacokinetic_DDI_rate": {
-            "carboplatin": 0,
-            "paclitaxel": 0
-        },
-        "most_DDI_drug_pharmacokinetic": [
-            "carboplatin",
-            "paclitaxel"
+            "docetaxel",
+            "cisplatin"
         ]
     },
     "['carboplatin', 'vp-16']": "No DDIs",
@@ -582,23 +567,25 @@ The DDI rate for each drug and the most DDI drug are computed for each treatment
     },
     "['carboplatin', 'pemetrexed']": {
         "DDI_rate": {
-            "carboplatin": 0.0,
-            "pemetrexed": 0.0
+            "pemetrexed": 0.0,
+            "carboplatin": 0.0
         },
         "most_DDI_drug": [
-            "carboplatin",
-            "pemetrexed"
+            "pemetrexed",
+            "carboplatin"
         ],
         "pharmacokinetic_DDI_rate": {
-            "carboplatin": 0,
-            "pemetrexed": 0
+            "pemetrexed": 0,
+            "carboplatin": 0
         },
         "most_DDI_drug_pharmacokinetic": [
-            "carboplatin",
-            "pemetrexed"
+            "pemetrexed",
+            "carboplatin"
         ]
     },
-    "['daratumumab', 'nivolumab']": {
+    "['pembrolizumab', 'abemaciclib']": "No DDIs",
+    "['ipilimumab', 'osimertinib']": "No DDIs",
+    "['nivolumab', 'daratumumab']": {
         "DDI_rate": {
             "daratumumab": 0.0,
             "nivolumab": 0.0
