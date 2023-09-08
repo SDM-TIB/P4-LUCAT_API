@@ -292,7 +292,7 @@ def get_interaction_in_text(set_DDIs):
         ddi_type = set_DDIs.iloc[i]['EffectorLabel'] + ' can ' + set_DDIs.iloc[i]['Impact'] + ' ' + set_DDIs.iloc[i][
                        'Effect'] + ' of ' + set_DDIs.iloc[i]['AffectedDrugLabel']
         if ddi in ddiTypeToxicity:
-            tox_increase = "The toxicity of  " + set_DDIs.iloc[i][
+            tox_increase = "The toxicity of " + set_DDIs.iloc[i][
                 'AffectedDrugLabel'] + " is increased because " + ddi_type
             list_effect.append(tox_increase)
         elif ddi in ddiTypeEffectiveness:
