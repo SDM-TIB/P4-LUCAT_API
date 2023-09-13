@@ -314,9 +314,9 @@ def get_DDI_DFI(input_list):
     ddi_dfi, ddi, dfi, set_dsd_label, set_food_label = extract_ddi_dfi(input_list)
     df_ddi, df_dfi = get_deduced_interaction(ddi, dfi, set_dsd_label)
     response = dict()
-    list_effect, list_ddi = get_interaction_in_text(df_ddi)
-    response["DDIs"] = list_ddi
-    response["DrugEffects"] = list_effect
+    # list_effect, list_ddi = get_interaction_in_text(df_ddi)
+    # response["DDIs"] = list_ddi
+    # response["DrugEffects"] = list_effect
     list_effect, list_dfi = get_interaction_in_text(df_dfi)
     response["DFIs"] = list_dfi
     response["FoodEffects"] = list_effect
