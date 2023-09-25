@@ -1,9 +1,9 @@
 import json
 import pandas as pd
 from SPARQLWrapper import SPARQLWrapper, JSON
-
-# KG = os.environ["ENDPOINT"]
-KG = 'https://labs.tib.eu/sdm/p4lucat_kg/sparql'
+import os
+KG = os.environ["ENDPOINT"]
+# KG = 'https://labs.tib.eu/sdm/p4lucat_kg/sparql'
 
 
 def execute_query(query, limit=0, page=0):
