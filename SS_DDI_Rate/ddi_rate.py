@@ -1,16 +1,16 @@
 import json
 import pandas as pd
-# import treatment_generation
 pd.options.mode.chained_assignment = None  # default='warn'
 from pyDatalog import pyDatalog
 from pyDatalog.pyDatalog import assert_fact, load, ask
+# import time
 
 from SPARQLWrapper import SPARQLWrapper, JSON
 from math import comb
 import os
 
-# KG = os.environ["ENDPOINT"]
-KG = 'https://labs.tib.eu/sdm/p4lucat_kg/sparql'
+KG = os.environ["ENDPOINT"]
+# KG = 'https://labs.tib.eu/sdm/p4lucat_kg/sparql'
 
 
 def execute_query(query, limit=0, page=0):
@@ -32,7 +32,9 @@ def build_query_p4lucat(input_cui_uri):
     prefix p4-lucat: <http://research.tib.eu/p4-lucat/vocab/>
     select distinct ?EffectorDrugLabel ?AffectedDrugLabel ?Effect  ?Impact ?precipitantDrug ?objectDrug
         where {
-        ?ddi a p4-lucat:DrugDrugInteraction .
+        {{?ddi a p4-lucat:PharmacokyneticDrugDrugInteraction.  BIND('Pharmacokinetics' as ?type)} 
+        UNION {?sim a p4-lucat:PharmacodynamicDrugDrugInteraction . 
+                            ?sim <http://www.w3.org/2000/01/rdf-schema#subClassOf> ?ddi.BIND('Pharmadynamics' as ?type) }}
         ?ddi p4-lucat:precipitantDrug ?precipitantDrug . 
         ?ddi p4-lucat:objectDrug ?objectDrug .
         ?ddi p4-lucat:effect ?o . 
@@ -47,13 +49,12 @@ def build_query_p4lucat(input_cui_uri):
 
 
 def store_pharmacokinetic_ddi(effect):
-    if effect in ['Excretion_rate', 'Excretory_function', 'Excretion', 'excretion rate', 'excretion_rate',
-                  'Excretion rate', 'Excretion Rate']:
+    if effect in ['excretion_rate', 'excretory_function', 'excretion', 'excretion rate']:
         effect = 'excretion'
-    elif effect in ['Process_of_absorption', 'Absorption']:
+    elif effect in ['process_of_absorption', 'process of absorption', 'absorption']:
         effect = 'absorption'
-    elif effect in ['Serum_concentration', 'Serum_concentration_of', 'Serum_level', 'Serum_globulin_level',
-                    'Metabolite', 'Active_metabolites', 'serum concentration']:
+    elif effect in ['serum_concentration', 'serum_concentration_of', 'serum_level', 'serum_globulin_level',
+                    'metabolite', 'active_metabolites', 'serum concentration']:
         effect = 'serum_concentration'
     elif effect in ['Metabolism']:
         effect = 'metabolism'
@@ -87,7 +88,7 @@ def query_result_p4lucat(query, labels):
     dd = {'EffectorDrugLabel': [], 'AffectedDrugLabel': [], 'Effect': [], 'Impact': [], 'precipitantDrug': [],
           'objectDrug': []}
     for r in results['results']['bindings']:
-        effect = r['Effect']['value']
+        effect = r['Effect']['value'].lower()
         effect, pharmadynamic = store_pharmacokinetic_ddi(effect)
         dd['Effect'].append(effect.lower())
         impact = r['Impact']['value']
@@ -212,12 +213,16 @@ def compute_ddi_rate(treatment):
     for i in range(treatment.shape[0]):
         input_cui = treatment.treatment[i]
         input_cui_uri = create_filter_cui(input_cui)
+        # start_time = time.perf_counter()
         labels = get_Labels(input_cui_uri)
         union, set_dsd_label = extract_ddi(input_cui, input_cui_uri, labels)
+        # print("extract_ddi: ", time.perf_counter() - start_time)
         # for k in range(union.shape[0]):
         #     print(union.EffectorDrugLabel[k], union.AffectedDrugLabel[k], union.Effect[k], union.Impact[k], union.precipitantDrug[k], union.objectDrug[k], union.Effect_Impact[k])
         if union.shape[0] > 0:
+            # start_time = time.perf_counter()
             response = discovering_knowledge(union, set_dsd_label)
+            # print("discovering_knowledge: ", time.perf_counter() - start_time)
             # list_treatment_evaluation['Treatment_'+str(i)] = response
             list_treatment_evaluation[str(labels)] = response
         else:
@@ -238,6 +243,8 @@ def compute_ddi_rate(treatment):
 #         "PDL1 result": "PDL1 Positive"
 #     }}}
 #     treatment = treatment_generation.compute_treatment(input_data)
+#     # start_time = time.perf_counter()
 #     response = compute_ddi_rate(treatment)
+#     # print("compute_ddi_rate: ", time.perf_counter() - start_time)
 #     r = json.dumps(response, indent=4)
-#     print(r)
+#     # print(r)
