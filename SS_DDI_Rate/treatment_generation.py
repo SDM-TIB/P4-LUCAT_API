@@ -3,9 +3,10 @@ import pandas as pd
 from SPARQLWrapper import SPARQLWrapper, JSON
 import numpy as np
 import os
+# import time
 
-# KG = os.environ["ENDPOINT"]
-KG = 'https://labs.tib.eu/sdm/p4lucat_kg/sparql'
+KG = os.environ["ENDPOINT"]
+# KG = 'https://labs.tib.eu/sdm/p4lucat_kg/sparql'
 
 
 def query_generation(input_data):
@@ -220,12 +221,21 @@ def create_treatment(drug_no_onco, onco_treatment):
 
 
 def compute_treatment(input_data):
+    # Start timer
+    # start_time = time.perf_counter()
     filter_pat_list = query_generation(input_data)
+    # print("query_generation: ", time.perf_counter() - start_time)
+    # start_time = time.perf_counter()
     drug_no_onco = get_non_oncological_treatment(filter_pat_list)
+    # print("get_non_oncological_treatment: ", time.perf_counter() - start_time)
+    # start_time = time.perf_counter()
     onco_treatment = get_oncological_treatment(filter_pat_list)
+    # print("get_oncological_treatment: ", time.perf_counter() - start_time)
     # for i in range(onco_treatment.shape[0]):
     #     print(onco_treatment.CUI_ID[i], onco_treatment.patient_id[i])
+    # start_time = time.perf_counter()
     treatment = create_treatment(drug_no_onco, onco_treatment)
+    # print("create_treatment: ", time.perf_counter() - start_time)
     return treatment
 
 
