@@ -141,7 +141,7 @@ def ruleTranslation(matched_df):
 
 
 def run_api(input_json):
-    my_dict = input_json
+    my_dict = input_json['Input']['Variables']
     data1, data2, violin_Data, pos_df, neg_df = process(data_dict, body_dict, head_dict, my_dict)
 
     pos_plot = violin_plot(pos_df)
