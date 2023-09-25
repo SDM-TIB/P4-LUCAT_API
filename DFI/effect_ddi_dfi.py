@@ -4,9 +4,10 @@ pd.options.mode.chained_assignment = None
 from pyDatalog import pyDatalog
 from pyDatalog.pyDatalog import assert_fact, load, ask
 from SPARQLWrapper import SPARQLWrapper, JSON
+import os
 
-# KG = os.environ["ENDPOINT"]
-KG = 'https://labs.tib.eu/sdm/p4lucat_kg/sparql'
+KG = os.environ["ENDPOINT"]
+# KG = 'https://labs.tib.eu/sdm/p4lucat_kg/sparql'
 
 
 def execute_query(query, limit=0, page=0):
@@ -52,7 +53,7 @@ def store_pharmacokinetic_ddi(effect):
     elif effect in ['serum_concentration', 'serum_concentration_of', 'serum_level', 'serum_globulin_level',
                     'metabolite', 'active_metabolites', 'serum concentration']:
         effect = 'serum_concentration'
-    elif effect in ['Metabolism']:
+    elif effect in ['metabolism']:
         effect = 'metabolism'
     else:
         return effect, True
@@ -324,17 +325,25 @@ def get_DDI_DFI(input_list):
 
 
 if __name__ == '__main__':
+    # input_list = {
+    #     "Input": {"OncologicalDrugs": ["C0015133","C0079083","C0377401","C0377401","C0008838","C0078257"],
+    #               "Non_OncologicalDrugs": ["C0009214","C0028978","C0064636","C0207683","C1871526"], "Foods": ["C0001975", "C0019588", "C0947567", "C0006644", "C0032821", "C0813171"]}
+    # }
+
     input_list = {
-        "Input": {"OncologicalDrugs": ["C0015133","C0079083","C0377401","C0377401","C0008838","C0078257"],
-                  "Non_OncologicalDrugs": ["C0009214","C0028978","C0064636","C0207683","C1871526"], "Foods": ["C0001975", "C0019588", "C0947567", "C0006644", "C0032821", "C0813171"]}
-    }
+	     "Input":{"OncologicalDrugs":["C0015133"],"Non_OncologicalDrugs":["C0028978","C0061851"], "Foods": ["C0001975", "C0019588", "C0947567", "C0006644", "C0032821", "C0813171"]}
+
+	}
+
+
     ddi_dfi, ddi, dfi, set_dsd_label, set_food_label = extract_ddi_dfi(input_list)
+    # print('DDI:', ddi)
     df_ddi, df_dfi = get_deduced_interaction(ddi, dfi, set_dsd_label)
 
     response = dict()
-    list_effect, list_ddi = get_interaction_in_text(df_ddi)
-    response["DDIs"] = list_ddi
-    response["DrugEffects"] = list_effect
+    # list_effect, list_ddi = get_interaction_in_text(df_ddi)
+    # response["DDIs"] = list_ddi
+    # response["DrugEffects"] = list_effect
     list_effect, list_dfi = get_interaction_in_text(df_dfi)
     response["DFIs"] = list_dfi
     response["FoodEffects"] = list_effect
