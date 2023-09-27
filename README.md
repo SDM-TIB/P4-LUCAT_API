@@ -67,17 +67,17 @@ and all the computed Metrics associated with this rules.
 List of parameters for selecting a population.
 
 ```
-	{"Input": {"Variables": {
-        "Gender": "",
-        "Smoking Habit": "",
-        "Organ affected by the familiar cancer": "",
-        "Cancer Stage": "IIIB",
-        "Histology": "",
-        "Molecular Markers": "",
-        "PDL1 result": "",
-        "Oncological Treatment Type": "Chemotherapy",
-        "RulesHead": "OncologicalTreatment"
-    }}}
+{
+  "Gender": "Male",
+  "SmokingHabit": "Ex smoker (>1 year)",
+  "OrganAffected": ["Malignant tumor of colon/Rectal Carcinoma"],
+  "CancerStage": "IV",
+  "Histology": "Adenocarcinoma",
+  "Biomarkers": "No Molecular marker",
+  "PDL1Result": "Unknown",
+  "RulesHead": "OncologicalTreatment",
+  "OncologicalTreatmentType": "Radiotherapy"
+}
 ```
 
 # Output
