@@ -136,6 +136,21 @@ Higher values in wedge rate mean drugs that correspond to the middle vertex of s
 A toxic drug is computed in terms of how many times this drug is a middle-vertex of the wedges in the directed graph that represent the interactions between the drugs of treatment.
 
 - Based on the paper: [Capturing Knowledge about Drug-Drug Interactions to Enhance Treatment Effectiveness](https://doi.org/10.1145/3460210.3493560).
+
+## POST request example
+```
+curl --location 'https://labs.tib.eu/sdm/p4_lucat_ddi_rules/treatment_DDI_rate' --header 'Content-Type: application/json' --data '{"Input": {"Variables": {
+        "Gender": "Female",
+        "Smoking Habit": "CurrentSmoker",
+        "Organ affected by the familiar cancer": "",
+        "Cancer Stage": "II",
+        "Histology": "",
+        "Molecular Markers": "ALK gene/Immunohistochemistry/Positive",
+        "PDL1 result": "PDL1 Positive"
+    }}}
+'
+```
+
 ## Input
 List of parameters for selecting a population.
 
@@ -622,6 +637,16 @@ The DDI rate for each drug and the most DDI drug are computed for each treatment
 ```
 
 # 4) Get the DFIs and DDIs.
+## POST request example
+```
+curl --location 'https://labs.tib.eu/sdm/p4_lucat_ddi_rules/DFI' --header 'Content-Type: application/json' --data '  {
+        "Input": {"OncologicalDrugs": ["C0015133","C0079083","C0377401","C0377401","C0008838","C0078257"],
+                  "Non_OncologicalDrugs": ["C0009214","C0028978","C0064636","C0207683","C1871526"], "Foods": ["C0001975", "C0019588", "C0947567", "C0006644", "C0032821", "C0813171"]}
+    }
+'
+
+```
+
 ## Input
 List of drugs CUIs and foods CUIs
 ```
