@@ -63,10 +63,8 @@ based on the selected population from the Input form. For this particular popula
 and all the computed Metrics associated with this rules.
 
 ### POST request example
-```json
-curl --location 'https://labs.tib.eu/sdm/p4_lucat_ddi_rules/rules' \
---header 'Content-Type: application/json' \
---data ' {
+```
+curl --location 'https://labs.tib.eu/sdm/p4_lucat_ddi_rules/rules' --header 'Content-Type: application/json' --data ' {
         "Gender": "Male",
         "SmokingHabit": "",
         "OrganAffectedByTheCancerOfFamiliar": ["others"],
