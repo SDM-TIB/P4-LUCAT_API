@@ -62,6 +62,22 @@ The Horn rule consists of a body with multiple atoms and a head with a single at
 based on the selected population from the Input form. For this particular population of lung cancer patients the API will output the Horn rules that follow the selected population
 and all the computed Metrics associated with this rules.
 
+### POST request example
+```json
+curl --location 'https://labs.tib.eu/sdm/p4_lucat_ddi_rules/rules' \
+--header 'Content-Type: application/json' \
+--data ' {
+        "Gender": "Male",
+        "SmokingHabit": "",
+        "OrganAffectedByTheCancerOfFamiliar": ["others"],
+        "CancerStage": "IIIB",
+        "Histology": "Adenocarcinoma",
+        "Molecular Markers": "",
+        "PDL1Result": "Positive",
+        "OncologicalTreatmentType": "Chemotherapy",
+        "RulesHead": "OncologicalTreatment"
+    }'
+```
 
 ## Input
 List of parameters for selecting a population.
