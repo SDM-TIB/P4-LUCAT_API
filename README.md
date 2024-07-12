@@ -4,6 +4,14 @@
 The P4-LUCAT knowledge graph contains the data for Lung cancer patients. The main goal of a lung cancer data ecosystem in P4-LUCAT is to perform analysis that give oncologists insights
 to improve the management of patients with lung cancer during their treatment, follow-up, and last period of life through data-driven techniques.
 
+## License
+This work is licensed under the MIT license.
+
+## Authors
+P4-LUCAT_APIs have been developed by members of the Scientific Data Management Group at TIB, as an ongoing research effort.
+The development is co-ordinated and supervised by Maria-Esther Vidal.
+The APIs have been developed by Disha Purohit, Ariam Rivas, and Ahmad Sakor.
+
 # 1) Drug-Drug Interactions (DDI) API
 
 We are interested in computing the correlation between a DDI in treatment and the number of patients with a specific response to the treatment.
